@@ -13,7 +13,8 @@
         }
 
         .swiper-wrapper {
-            display: flex; /* Isso garante que as imagens fiquem alinhadas horizontalmente */
+            display: flex; /* Garantir que os slides fiquem lado a lado */
+            flex-wrap: nowrap; /* Impede que os slides quebrem linha */
         }
 
         .swiper-slide {
@@ -21,10 +22,11 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0; /* Impede que os slides encolham */
+            width: 300px; /* Largura fixa para cada imagem */
         }
 
         .swiper-slide img {
-            width: 300px; /* Tamanho da imagem */
+            width: 100%; /* A imagem vai preencher o slide */
             height: auto;
             border-radius: 10px; /* Borda arredondada */
             user-select: none; /* Impede a seleção das imagens */
@@ -103,7 +105,7 @@
             },
             loop: true, // Faz o carrossel girar infinitamente
             grabCursor: true, // Permite arrastar o carrossel
-            speed: 5000, // Aumento da velocidade de transição para deixar mais suave
+            speed: 3000, // Aumento da velocidade de transição para deixar mais suave
             breakpoints: {
                 768: {
                     slidesPerView: 2, // Em dispositivos menores, mostrar 2 imagens
