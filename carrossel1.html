@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
         .carousel-container {
-            width: 100%; /* Aumentei a largura do carrossel para ficar maior */
+            width: 100%; /* Mantém a largura do carrossel responsiva */
             margin: 0 auto; /* Para centralizar o carrossel */
             user-select: none; /* Desabilitar seleção de imagens */
         }
@@ -22,7 +22,7 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0; /* Impede que os slides encolham */
-            width: 300px; /* Largura fixa para cada imagem */
+            width: 20%; /* Ajusta a largura de cada slide para ser proporcional */
         }
 
         .swiper-slide img {
@@ -97,7 +97,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper('.swiper', {
-            slidesPerView: 6, // Número de slides visíveis
+            slidesPerView: 'auto', // Faz com que o número de slides visíveis seja dinâmico
             spaceBetween: 12, // Espaço entre os slides
             autoplay: {
                 delay: 0, // Atraso entre cada slide (em milissegundos) - rotação contínua
@@ -108,10 +108,10 @@
             speed: 8000, // Aumento da velocidade de transição para ficar bem mais devagar
             breakpoints: {
                 768: {
-                    slidesPerView: 2, // Em dispositivos menores, mostrar 2 imagens
+                    slidesPerView: 2, // Para telas menores, mostrar 2 imagens
                 },
                 1024: {
-                    slidesPerView: 6, // Para telas maiores, mostrar 6 imagens
+                    slidesPerView: 4, // Para telas maiores, mostrar 4 imagens
                 }
             }
         });
