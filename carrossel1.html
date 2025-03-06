@@ -7,7 +7,8 @@
     <style>
         .carousel-container {
             overflow: hidden;
-            width: 100%;
+            width: 80%; /* Aumentando o tamanho do carrossel */
+            margin: 0 auto;
             white-space: nowrap;
             position: relative;
             cursor: grab;
@@ -33,6 +34,11 @@
             to {
                 transform: translateX(-1200px); /* 8 imagens x largura + margem */
             }
+        }
+
+        /* Carrossel fixo no movimento enquanto é arrastado */
+        .active {
+            cursor: grabbing;
         }
     </style>
 </head>
@@ -61,6 +67,7 @@
 
     <script>
         const carousel = document.getElementById('carousel');
+        const track = document.querySelector('.carousel-track');
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -69,18 +76,17 @@
             isDown = true;
             carousel.classList.add('active');
             startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = carousel.scrollLeft;
-            carousel.style.cursor = 'grabbing';
+            scrollLeft = track.scrollLeft;
         });
 
         carousel.addEventListener('mouseleave', () => {
             isDown = false;
-            carousel.style.cursor = 'grab';
+            carousel.classList.remove('active');
         });
 
         carousel.addEventListener('mouseup', () => {
             isDown = false;
-            carousel.style.cursor = 'grab';
+            carousel.classList.remove('active');
         });
 
         carousel.addEventListener('mousemove', (e) => {
@@ -88,7 +94,16 @@
             e.preventDefault();
             const x = e.pageX - carousel.offsetLeft;
             const walk = (x - startX) * 2; // Ajuste a velocidade do arraste
-            carousel.scrollLeft = scrollLeft - walk;
+            track.scrollLeft = scrollLeft - walk;
+        });
+
+        // Ajuste para permitir o carrossel circular quando chegar ao final
+        track.addEventListener('scroll', () => {
+            if (track.scrollLeft === 0) {
+                track.scrollLeft = track.scrollWidth / 2;
+            } else if (track.scrollLeft === track.scrollWidth - carousel.offsetWidth) {
+                track.scrollLeft = track.scrollWidth / 2 - carousel.offsetWidth;
+            }
         });
     </script>
 </body>
