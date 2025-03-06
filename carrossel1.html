@@ -7,23 +7,23 @@
     <style>
         .carousel-container {
             overflow: hidden;
-            width: 80%; /* Aumentando o tamanho do carrossel */
-            margin: 0 auto;
+            width: 80%; /* Ajuste o valor para aumentar ou diminuir o carrossel */
             white-space: nowrap;
             position: relative;
             cursor: grab;
+            margin: 0 auto; /* Para centralizar o carrossel */
         }
 
         .carousel-track {
             display: flex;
             animation: scroll 45s linear infinite;
-            width: calc(8 * 150px * 2); /* 8 imagens x largura x duplicação */
+            width: calc(8 * 300px * 2); /* Aumentei o tamanho das imagens e ajustei a largura */
         }
 
         .carousel-track img {
-            width: 150px; /* Ajuste conforme necessário */
+            width: 300px; /* Aumente esse valor para imagens maiores */
             height: auto;
-            margin-right: 5px; /* Reduzi o espaço entre as imagens */
+            margin-right: 10px; /* Reduzi o espaço entre as imagens */
             border-radius: 10px; /* Borda arredondada */
         }
 
@@ -32,13 +32,13 @@
                 transform: translateX(0);
             }
             to {
-                transform: translateX(-1200px); /* 8 imagens x largura + margem */
+                transform: translateX(-2400px); /* Ajustei o deslocamento para o novo tamanho das imagens */
             }
         }
 
-        /* Carrossel fixo no movimento enquanto é arrastado */
-        .active {
-            cursor: grabbing;
+        /* Bloquear o arrasto das imagens */
+        .carousel-track img {
+            pointer-events: none;
         }
     </style>
 </head>
@@ -67,7 +67,6 @@
 
     <script>
         const carousel = document.getElementById('carousel');
-        const track = document.querySelector('.carousel-track');
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -76,17 +75,18 @@
             isDown = true;
             carousel.classList.add('active');
             startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = track.scrollLeft;
+            scrollLeft = carousel.scrollLeft;
+            carousel.style.cursor = 'grabbing';
         });
 
         carousel.addEventListener('mouseleave', () => {
             isDown = false;
-            carousel.classList.remove('active');
+            carousel.style.cursor = 'grab';
         });
 
         carousel.addEventListener('mouseup', () => {
             isDown = false;
-            carousel.classList.remove('active');
+            carousel.style.cursor = 'grab';
         });
 
         carousel.addEventListener('mousemove', (e) => {
@@ -94,16 +94,15 @@
             e.preventDefault();
             const x = e.pageX - carousel.offsetLeft;
             const walk = (x - startX) * 2; // Ajuste a velocidade do arraste
-            track.scrollLeft = scrollLeft - walk;
+            carousel.scrollLeft = scrollLeft - walk;
         });
 
-        // Ajuste para permitir o carrossel circular quando chegar ao final
-        track.addEventListener('scroll', () => {
-            if (track.scrollLeft === 0) {
-                track.scrollLeft = track.scrollWidth / 2;
-            } else if (track.scrollLeft === track.scrollWidth - carousel.offsetWidth) {
-                track.scrollLeft = track.scrollWidth / 2 - carousel.offsetWidth;
-            }
+        // Bloquear o comportamento de arrasto das imagens
+        const images = document.querySelectorAll('.carousel-track img');
+        images.forEach(img => {
+            img.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
         });
     </script>
 </body>
