@@ -10,6 +10,7 @@
             width: 100%; /* Mantém a largura do carrossel responsiva */
             margin: 0 auto; /* Para centralizar o carrossel */
             user-select: none; /* Desabilitar seleção de imagens */
+            max-width: 1200px; /* Limita a largura máxima em telas grandes */
         }
 
         .swiper-wrapper {
@@ -22,7 +23,9 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0; /* Impede que os slides encolham */
-            width: 20%; /* Ajusta a largura de cada slide para ser proporcional */
+            width: 100%; /* Cada slide ocupa 100% da tela no mobile */
+            max-width: 300px; /* Define um tamanho máximo para o slide */
+            box-sizing: border-box; /* Evita problemas com o cálculo do tamanho */
         }
 
         .swiper-slide img {
@@ -107,11 +110,14 @@
             grabCursor: true, // Permite arrastar o carrossel
             speed: 8000, // Aumento da velocidade de transição para ficar bem mais devagar
             breakpoints: {
+                320: {
+                    slidesPerView: 1, // Exibe um slide por vez no mobile
+                },
                 768: {
-                    slidesPerView: 2, // Para telas menores, mostrar 2 imagens
+                    slidesPerView: 2, // Exibe dois slides por vez em tablets
                 },
                 1024: {
-                    slidesPerView: 4, // Para telas maiores, mostrar 4 imagens
+                    slidesPerView: 4, // Exibe quatro slides por vez em telas maiores
                 }
             }
         });
