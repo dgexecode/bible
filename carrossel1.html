@@ -4,90 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrossel Infinito</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
         .carousel-container {
-            overflow: hidden;
             width: 80%; /* Ajuste o valor para aumentar ou diminuir o carrossel */
             margin: 0 auto; /* Para centralizar o carrossel */
             user-select: none; /* Desabilitar seleção de imagens */
-            cursor: grab;
         }
 
-        .carousel-track {
+        .swiper-slide {
             display: flex;
-            will-change: transform; /* Otimização */
+            justify-content: center;
+            align-items: center;
         }
 
-        .carousel-track img {
-            width: 300px; /* Ajuste o tamanho das imagens conforme necessário */
+        .swiper-slide img {
+            width: 300px; /* Tamanho da imagem */
             height: auto;
-            margin-right: 10px; /* Espaçamento entre as imagens */
             border-radius: 10px; /* Borda arredondada */
             user-select: none; /* Impede a seleção das imagens */
         }
     </style>
 </head>
 <body>
-    <div class="carousel-container" id="carousel">
-        <div class="carousel-track" id="track">
-            <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
-            <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
-            <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
-            <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
-            <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
-            <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
-            <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
-            <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
+
+    <div class="carousel-container">
+        <!-- Início do carrossel -->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
+                </div>
+                <!-- Duplicação das imagens para o efeito infinito -->
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Scripts do Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        const carousel = document.getElementById('carousel');
-        const track = document.getElementById('track');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        // Função para iniciar o arrasto
-        carousel.addEventListener('mousedown', (e) => {
-            isDown = true;
-            carousel.style.cursor = 'grabbing';
-            startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = track.scrollLeft;
-        });
-
-        // Função para parar o arrasto
-        carousel.addEventListener('mouseup', () => {
-            isDown = false;
-            carousel.style.cursor = 'grab';
-        });
-
-        // Parar o arrasto se o cursor sair da área do carrossel
-        carousel.addEventListener('mouseleave', () => {
-            isDown = false;
-            carousel.style.cursor = 'grab';
-        });
-
-        // Função para arrastar as imagens
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2; // Ajusta a velocidade do arraste
-            track.scrollLeft = scrollLeft - walk;
-        });
-
-        // Função para garantir o efeito infinito (duplicando o carrossel)
-        function infiniteScroll() {
-            if (track.scrollLeft <= 0) {
-                track.scrollLeft = track.scrollWidth / 2; // Ajusta a rolagem para o meio
-            } else if (track.scrollLeft >= track.scrollWidth / 2) {
-                track.scrollLeft = 0; // Ajusta para o começo
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 6, // Número de slides visíveis
+            spaceBetween: 12, // Espaço entre os slides
+            autoplay: {
+                delay: 1, // Delay entre cada slide (em milissegundos)
+                disableOnInteraction: false, // Continua mesmo após interação do usuário
+            },
+            loop: true, // Faz o carrossel girar infinitamente
+            grabCursor: true, // Permite arrastar o carrossel
+            breakpoints: {
+                768: {
+                    slidesPerView: 2, // Em dispositivos menores, mostrar 2 imagens
+                },
+                1024: {
+                    slidesPerView: 6, // Para telas maiores, mostrar 6 imagens
+                }
             }
-        }
-
-        // Atualiza o carrossel a cada 10ms para garantir o efeito infinito
-        setInterval(infiniteScroll, 10);
+        });
     </script>
+
 </body>
 </html>
