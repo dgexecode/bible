@@ -1,0 +1,46 @@
+<div class="carousel">
+  <div class="carousel-track">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 1">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 2">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 3">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 4">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 5">
+    <!-- Duplicamos as imagens para efeito infinito -->
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 1">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 2">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 3">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 4">
+    <img src="https://via.placeholder.com/150x100" alt="Imagem 5">
+  </div>
+</div>
+
+<style>
+  .carousel {
+    overflow: hidden;
+    width: 100%;
+    background: #f4f4f4;
+    padding: 10px 0;
+    white-space: nowrap;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: slide 15s linear infinite;
+  }
+
+  .carousel-track img {
+    width: 150px; /* Ajuste conforme necessário */
+    height: 100px;
+    object-fit: cover;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
