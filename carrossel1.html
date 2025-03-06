@@ -8,40 +8,28 @@
         .carousel-container {
             overflow: hidden;
             width: 80%; /* Ajuste o valor para aumentar ou diminuir o carrossel */
-            white-space: nowrap;
-            position: relative;
-            cursor: grab;
             margin: 0 auto; /* Para centralizar o carrossel */
             user-select: none; /* Desabilitar seleção de imagens */
+            cursor: grab;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.25s ease; /* Suaviza o movimento */
+            will-change: transform; /* Otimização */
         }
 
         .carousel-track img {
-            width: 300px; /* Tamanho das imagens */
+            width: 300px; /* Ajuste o tamanho das imagens conforme necessário */
             height: auto;
-            margin-right: 10px; /* Espaço entre as imagens */
+            margin-right: 10px; /* Espaçamento entre as imagens */
             border-radius: 10px; /* Borda arredondada */
             user-select: none; /* Impede a seleção das imagens */
         }
-
     </style>
 </head>
 <body>
     <div class="carousel-container" id="carousel">
-        <div class="carousel-track">
-            <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
-            <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
-            <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
-            <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
-            <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
-            <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
-            <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
-            <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
-            <!-- Duplicação para efeito infinito -->
+        <div class="carousel-track" id="track">
             <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
             <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
             <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
@@ -55,52 +43,51 @@
 
     <script>
         const carousel = document.getElementById('carousel');
-        const track = document.querySelector('.carousel-track');
+        const track = document.getElementById('track');
         let isDown = false;
         let startX;
         let scrollLeft;
 
+        // Função para iniciar o arrasto
         carousel.addEventListener('mousedown', (e) => {
             isDown = true;
-            carousel.classList.add('active');
+            carousel.style.cursor = 'grabbing';
             startX = e.pageX - carousel.offsetLeft;
             scrollLeft = track.scrollLeft;
-            carousel.style.cursor = 'grabbing';
         });
 
-        carousel.addEventListener('mouseleave', () => {
-            isDown = false;
-            carousel.style.cursor = 'grab';
-        });
-
+        // Função para parar o arrasto
         carousel.addEventListener('mouseup', () => {
             isDown = false;
             carousel.style.cursor = 'grab';
         });
 
+        // Parar o arrasto se o cursor sair da área do carrossel
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.style.cursor = 'grab';
+        });
+
+        // Função para arrastar as imagens
         carousel.addEventListener('mousemove', (e) => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - carousel.offsetLeft;
-            const walk = (x - startX) * 2; // Ajuste a velocidade do arraste
+            const walk = (x - startX) * 2; // Ajusta a velocidade do arraste
             track.scrollLeft = scrollLeft - walk;
         });
 
-        // Evita a seleção de imagens
-        track.querySelectorAll('img').forEach(img => {
-            img.addEventListener('dragstart', (e) => {
-                e.preventDefault();
-            });
-        });
-
-        // Função para garantir o efeito de carrossel infinito
-        track.addEventListener('scroll', () => {
-            if (track.scrollLeft >= track.scrollWidth - carousel.offsetWidth) {
-                track.scrollLeft = 0;
-            } else if (track.scrollLeft <= 0) {
-                track.scrollLeft = track.scrollWidth - carousel.offsetWidth;
+        // Função para garantir o efeito infinito (duplicando o carrossel)
+        function infiniteScroll() {
+            if (track.scrollLeft <= 0) {
+                track.scrollLeft = track.scrollWidth / 2; // Ajusta a rolagem para o meio
+            } else if (track.scrollLeft >= track.scrollWidth / 2) {
+                track.scrollLeft = 0; // Ajusta para o começo
             }
-        });
+        }
+
+        // Atualiza o carrossel a cada 10ms para garantir o efeito infinito
+        setInterval(infiniteScroll, 10);
     </script>
 </body>
 </html>
