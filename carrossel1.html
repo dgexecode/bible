@@ -23,6 +23,7 @@
             height: auto;
             border-radius: 10px; /* Borda arredondada */
             user-select: none; /* Impede a seleção das imagens */
+            margin-right: 20px; /* Espaço entre as imagens */
         }
     </style>
 </head>
@@ -90,13 +91,14 @@
     <script>
         const swiper = new Swiper('.swiper', {
             slidesPerView: 6, // Número de slides visíveis
-            spaceBetween: 12, // Espaço entre os slides
+            spaceBetween: 20, // Aumentado o espaço entre as imagens
             autoplay: {
-                delay: 1, // Delay entre cada slide (em milissegundos)
+                delay: 2000, // Aumentei o delay para deixar o carrossel mais lento
                 disableOnInteraction: false, // Continua mesmo após interação do usuário
             },
             loop: true, // Faz o carrossel girar infinitamente
             grabCursor: true, // Permite arrastar o carrossel
+            speed: 5000, // Aumenta a velocidade da transição para uma rolagem mais suave
             breakpoints: {
                 768: {
                     slidesPerView: 2, // Em dispositivos menores, mostrar 2 imagens
