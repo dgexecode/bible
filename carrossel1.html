@@ -17,31 +17,17 @@
 
         .carousel-track {
             display: flex;
-            animation: scroll 45s linear infinite;
-            width: calc(8 * 300px * 2); /* Aumentei o tamanho das imagens e ajustei a largura */
+            transition: transform 0.25s ease; /* Suaviza o movimento */
         }
 
         .carousel-track img {
-            width: 300px; /* Aumente esse valor para imagens maiores */
+            width: 300px; /* Tamanho das imagens */
             height: auto;
-            margin-right: 10px; /* Reduzi o espaço entre as imagens */
+            margin-right: 10px; /* Espaço entre as imagens */
             border-radius: 10px; /* Borda arredondada */
             user-select: none; /* Impede a seleção das imagens */
         }
 
-        @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-2400px); /* Ajustei o deslocamento para o novo tamanho das imagens */
-            }
-        }
-
-        /* Bloquear o arrasto das imagens */
-        .carousel-track img {
-            pointer-events: none;
-        }
     </style>
 </head>
 <body>
@@ -69,6 +55,7 @@
 
     <script>
         const carousel = document.getElementById('carousel');
+        const track = document.querySelector('.carousel-track');
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -77,7 +64,7 @@
             isDown = true;
             carousel.classList.add('active');
             startX = e.pageX - carousel.offsetLeft;
-            scrollLeft = carousel.scrollLeft;
+            scrollLeft = track.scrollLeft;
             carousel.style.cursor = 'grabbing';
         });
 
@@ -96,15 +83,23 @@
             e.preventDefault();
             const x = e.pageX - carousel.offsetLeft;
             const walk = (x - startX) * 2; // Ajuste a velocidade do arraste
-            carousel.scrollLeft = scrollLeft - walk;
+            track.scrollLeft = scrollLeft - walk;
         });
 
-        // Bloquear o comportamento de arrasto das imagens
-        const images = document.querySelectorAll('.carousel-track img');
-        images.forEach(img => {
+        // Evita a seleção de imagens
+        track.querySelectorAll('img').forEach(img => {
             img.addEventListener('dragstart', (e) => {
                 e.preventDefault();
             });
+        });
+
+        // Função para garantir o efeito de carrossel infinito
+        track.addEventListener('scroll', () => {
+            if (track.scrollLeft >= track.scrollWidth - carousel.offsetWidth) {
+                track.scrollLeft = 0;
+            } else if (track.scrollLeft <= 0) {
+                track.scrollLeft = track.scrollWidth - carousel.offsetWidth;
+            }
         });
     </script>
 </body>
