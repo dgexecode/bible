@@ -1,46 +1,60 @@
-<div class="carousel">
-  <div class="carousel-track">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 1">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 2">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 3">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 4">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 5">
-    <!-- Duplicamos as imagens para efeito infinito -->
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 1">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 2">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 3">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 4">
-    <img src="https://via.placeholder.com/150x100" alt="Imagem 5">
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel Infinito</title>
+    <style>
+        .carousel-container {
+            overflow: hidden;
+            width: 100%;
+            white-space: nowrap;
+            position: relative;
+        }
 
-<style>
-  .carousel {
-    overflow: hidden;
-    width: 100%;
-    background: #f4f4f4;
-    padding: 10px 0;
-    white-space: nowrap;
-  }
+        .carousel-track {
+            display: flex;
+            animation: scroll 20s linear infinite;
+            width: calc(8 * 150px * 2); /* 8 imagens x largura x duplicação */
+        }
 
-  .carousel-track {
-    display: flex;
-    gap: 20px;
-    animation: slide 15s linear infinite;
-  }
+        .carousel-track img {
+            width: 150px; /* Ajuste conforme necessário */
+            height: auto;
+            margin-right: 10px;
+        }
 
-  .carousel-track img {
-    width: 150px; /* Ajuste conforme necessário */
-    height: 100px;
-    object-fit: cover;
-  }
-
-  @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-</style>
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-1200px); /* 8 imagens x largura + margem */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <img src="imagem1.jpg" alt="Imagem 1">
+            <img src="imagem2.jpg" alt="Imagem 2">
+            <img src="imagem3.jpg" alt="Imagem 3">
+            <img src="imagem4.jpg" alt="Imagem 4">
+            <img src="imagem5.jpg" alt="Imagem 5">
+            <img src="imagem6.jpg" alt="Imagem 6">
+            <img src="imagem7.jpg" alt="Imagem 7">
+            <img src="imagem8.jpg" alt="Imagem 8">
+            <!-- Duplicação para efeito infinito -->
+            <img src="imagem1.jpg" alt="Imagem 1">
+            <img src="imagem2.jpg" alt="Imagem 2">
+            <img src="imagem3.jpg" alt="Imagem 3">
+            <img src="imagem4.jpg" alt="Imagem 4">
+            <img src="imagem5.jpg" alt="Imagem 5">
+            <img src="imagem6.jpg" alt="Imagem 6">
+            <img src="imagem7.jpg" alt="Imagem 7">
+            <img src="imagem8.jpg" alt="Imagem 8">
+        </div>
+    </div>
+</body>
+</html>
