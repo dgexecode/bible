@@ -12,6 +12,7 @@
             position: relative;
             cursor: grab;
             margin: 0 auto; /* Para centralizar o carrossel */
+            user-select: none; /* Desabilitar seleção de imagens */
         }
 
         .carousel-track {
@@ -25,6 +26,7 @@
             height: auto;
             margin-right: 10px; /* Reduzi o espaço entre as imagens */
             border-radius: 10px; /* Borda arredondada */
+            user-select: none; /* Impede a seleção das imagens */
         }
 
         @keyframes scroll {
