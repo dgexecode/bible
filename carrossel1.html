@@ -7,40 +7,40 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
         .carousel-container {
-            width: 100%; /* Mantém a largura do carrossel responsiva */
-            margin: 0 auto; /* Para centralizar o carrossel */
-            user-select: none; /* Desabilitar seleção de imagens */
-            max-width: 1200px; /* Limita a largura máxima em telas grandes */
-            margin-bottom: 30px; /* Espaço entre os dois carrosséis */
+            width: 100%;
+            margin: 0 auto;
+            user-select: none;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            overflow: hidden;
         }
 
         .swiper-wrapper {
-            display: flex; /* Garantir que os slides fiquem lado a lado */
-            flex-wrap: nowrap; /* Impede que os slides quebrem linha */
+            display: flex;
+            flex-wrap: nowrap;
         }
 
         .swiper-slide {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-shrink: 0; /* Impede que os slides encolham */
-            width: 100%; /* Cada slide ocupa 100% da tela no mobile */
-            max-width: 300px; /* Define um tamanho máximo para o slide */
-            box-sizing: border-box; /* Evita problemas com o cálculo do tamanho */
+            flex-shrink: 0;
+            width: auto;
+            max-width: 300px;
+            box-sizing: border-box;
         }
 
         .swiper-slide img {
-            width: 100%; /* A imagem vai preencher o slide */
+            width: 100%;
             height: auto;
-            border-radius: 10px; /* Borda arredondada */
-            user-select: none; /* Impede a seleção das imagens */
-            margin-right: 12px; /* Espaçamento entre as imagens */
+            border-radius: 10px;
+            user-select: none;
+            margin-right: 12px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Primeiro Carrossel -->
     <div class="carousel-container">
         <div class="swiper" id="swiper1">
             <div class="swiper-wrapper">
@@ -68,36 +68,10 @@
                 <div class="swiper-slide">
                     <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
                 </div>
-                <!-- Duplicação das imagens para o efeito infinito -->
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Segundo Carrossel (Duplicado) -->
     <div class="carousel-container">
         <div class="swiper" id="swiper2">
             <div class="swiper-wrapper">
@@ -125,86 +99,39 @@
                 <div class="swiper-slide">
                     <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem H">
                 </div>
-                <!-- Duplicação das imagens para o efeito infinito -->
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem A">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem B">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem C">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem D">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem E">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem F">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem G">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem H">
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts do Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        // Inicialização do primeiro carrossel
-        const swiper1 = new Swiper('#swiper1', {
-            slidesPerView: 'auto',
-            spaceBetween: 12,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-            },
-            loop: true,
-            grabCursor: true,
-            speed: 8000, // Velocidade de transição
-            breakpoints: {
-                320: {
-                    slidesPerView: 2, // Exibe 2 slides no mobile
+        function initSwiper(id) {
+            return new Swiper(id, {
+                slidesPerView: 'auto',
+                spaceBetween: 12,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
                 },
-                768: {
-                    slidesPerView: 4, // Exibe 4 slides em tablets
-                },
-                1024: {
-                    slidesPerView: 6, // Exibe 4 slides em telas maiores
+                loop: true,
+                grabCursor: true,
+                speed: 8000,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 2,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                    },
+                    1024: {
+                        slidesPerView: 6,
+                    }
                 }
-            }
-        });
+            });
+        }
 
-        // Inicialização do segundo carrossel
-        const swiper2 = new Swiper('#swiper2', {
-            slidesPerView: 'auto',
-            spaceBetween: 12,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-            },
-            loop: true,
-            grabCursor: true,
-            speed: 8000, // Velocidade de transição
-            breakpoints: {
-                320: {
-                    slidesPerView: 2, // Exibe 2 slides no mobile
-                },
-                768: {
-                    slidesPerView: 4, // Exibe 4 slides em tablets
-                },
-                1024: {
-                    slidesPerView: 6, // Exibe 4 slides em telas maiores
-                }
-            }
-        });
+        const swiper1 = initSwiper('#swiper1');
+        const swiper2 = initSwiper('#swiper2');
     </script>
-
 </body>
 </html>
