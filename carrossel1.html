@@ -42,14 +42,14 @@
         /* Ajuste para dispositivos móveis */
         @media (max-width: 768px) {
             .swiper-slide {
-                width: 50%; /* 2 slides por vez */
+                width: 50%; /* 2 slides por vez no mobile */
             }
         }
 
         /* Ajuste para tablets */
         @media (min-width: 769px) and (max-width: 1024px) {
             .swiper-slide {
-                width: 33.33%; /* 3 slides por vez em tablets */
+                width: 25%; /* 4 slides por vez em tablets */
             }
         }
 
@@ -145,7 +145,7 @@
                         slidesPerView: 2.2, // 2 slides no mobile
                     },
                     768: {
-                        slidesPerView: 3, // 3 slides em tablets
+                        slidesPerView: 4, // 4 slides em tablets
                     },
                     1024: {
                         slidesPerView: 6, // 6 slides no desktop
@@ -159,4 +159,3 @@
     </script>
 </body>
 </html>
- 
