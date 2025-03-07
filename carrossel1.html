@@ -10,9 +10,9 @@
             width: 100%;
             margin: 0 auto;
             user-select: none;
+            max-width: 1200px;
             margin-bottom: 30px;
             overflow: hidden;
-            box-sizing: border-box;
         }
 
         .swiper-wrapper {
@@ -25,7 +25,8 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
-            width: 25%; /* Ajuste automático baseado na largura do contêiner */
+            width: auto;
+            max-width: 300px;
             box-sizing: border-box;
         }
 
@@ -35,25 +36,6 @@
             border-radius: 10px;
             user-select: none;
             margin-right: 12px;
-        }
-
-        /* Responsividade para dispositivos móveis e tablets */
-        @media (max-width: 1024px) {
-            .swiper-slide {
-                width: 22.22%; /* Ajuste automático para telas médias */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .swiper-slide {
-                width: 40%; /* Ajuste para telas menores (tablets) */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .swiper-slide {
-                width: 70%; /* Ajuste para smartphones */
-            }
         }
     </style>
 </head>
