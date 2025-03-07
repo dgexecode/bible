@@ -11,7 +11,7 @@
             width: 100%;
             margin: 0 auto;
             user-select: none;
-            max-width: 100%; /* Garante que o container ocupe toda a largura disponível */
+            max-width: 95%; /* Reduzir a largura do container para evitar rolagem */
             margin-bottom: 30px;
             overflow: hidden; /* Impede barras de rolagem */
             box-sizing: border-box; /* Garante que o padding e margin não ultrapassem a largura */
@@ -36,7 +36,7 @@
             height: auto;
             border-radius: 10px;
             user-select: none;
-            margin-right: 12px;
+            margin-right: 8px; /* Reduzindo a margem para aumentar o espaço */
         }
 
         /* Ajuste para dispositivos móveis */
@@ -132,7 +132,7 @@
         function initSwiper(id) {
             return new Swiper(id, {
                 slidesPerView: 'auto',
-                spaceBetween: 12,
+                spaceBetween: 8, // Reduzindo o espaço entre os slides
                 autoplay: {
                     delay: 0,
                     disableOnInteraction: false,
