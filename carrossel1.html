@@ -6,13 +6,14 @@
     <title>Carrossel Infinito</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
+        /* Container do carrossel */
         .carousel-container {
             width: 100%;
             margin: 0 auto;
             user-select: none;
             max-width: 1200px;
             margin-bottom: 30px;
-            overflow: hidden;
+            overflow: hidden; /* Impede barras de rolagem */
         }
 
         .swiper-wrapper {
@@ -26,7 +27,6 @@
             align-items: center;
             flex-shrink: 0;
             width: auto;
-            max-width: 300px;
             box-sizing: border-box;
         }
 
@@ -37,10 +37,32 @@
             user-select: none;
             margin-right: 12px;
         }
+
+        /* Ajuste para dispositivos móveis */
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 50%; /* 2 slides por vez */
+            }
+        }
+
+        /* Ajuste para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .swiper-slide {
+                width: 33.33%; /* 3 slides por vez */
+            }
+        }
+
+        /* Ajuste para desktops */
+        @media (min-width: 1025px) {
+            .swiper-slide {
+                width: 16.66%; /* 6 slides por vez */
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Carrossel 1 -->
     <div class="carousel-container">
         <div class="swiper" id="swiper1">
             <div class="swiper-wrapper">
@@ -72,6 +94,7 @@
         </div>
     </div>
 
+    <!-- Carrossel 2 -->
     <div class="carousel-container">
         <div class="swiper" id="swiper2">
             <div class="swiper-wrapper">
@@ -118,13 +141,13 @@
                 speed: 8000,
                 breakpoints: {
                     320: {
-                        slidesPerView: 2,
+                        slidesPerView: 2, // 2 slides no mobile
                     },
                     768: {
-                        slidesPerView: 4,
+                        slidesPerView: 4, // 4 slides no tablet
                     },
                     1024: {
-                        slidesPerView: 6,
+                        slidesPerView: 6, // 6 slides no desktop
                     }
                 }
             });
