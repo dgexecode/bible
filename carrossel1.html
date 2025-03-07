@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrossel Infinito</title>
+    <title>Carrossel Infinito 1</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
         /* Container do carrossel */
@@ -11,7 +11,7 @@
             width: 90%;
             margin: 0 auto;
             user-select: none;
-            max-width: 100%; /* Reduzir a largura do container para evitar rolagem */
+            max-width: 100%;
             margin-bottom: 30px;
             overflow: hidden; /* Impede barras de rolagem */
             box-sizing: border-box; /* Garante que o padding e margin não ultrapassem a largura */
@@ -95,44 +95,12 @@
         </div>
     </div>
 
-    <!-- Carrossel 2 -->
-    <div class="carousel-container">
-        <div class="swiper" id="swiper2">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem A">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem B">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem C">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem D">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem E">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem F">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem G">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem H">
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         function initSwiper(id) {
             return new Swiper(id, {
                 slidesPerView: 'auto',
-                spaceBetween: 8, // Reduzindo o espaço entre os slides
+                spaceBetween: 8,
                 autoplay: {
                     delay: 0,
                     disableOnInteraction: false,
@@ -155,7 +123,7 @@
         }
 
         const swiper1 = initSwiper('#swiper1');
-        const swiper2 = initSwiper('#swiper2');
     </script>
+
 </body>
 </html>
