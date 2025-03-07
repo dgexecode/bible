@@ -10,9 +10,9 @@
             width: 100%;
             margin: 0 auto;
             user-select: none;
-            max-width: 1200px;
             margin-bottom: 30px;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .swiper-wrapper {
@@ -36,6 +36,25 @@
             border-radius: 10px;
             user-select: none;
             margin-right: 12px;
+        }
+
+        /* Responsividade para dispositivos móveis e tablets */
+        @media (max-width: 1024px) {
+            .swiper-slide {
+                max-width: 250px; /* Ajuste para dispositivos menores */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide {
+                max-width: 200px; /* Ajuste para tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .swiper-slide {
+                max-width: 150px; /* Ajuste para smartphones */
+            }
         }
     </style>
 </head>
