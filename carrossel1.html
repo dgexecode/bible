@@ -6,22 +6,22 @@
     <title>Carrossel Responsivo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
-        /* Remove rolagem horizontal da página */
-        body {
+        /* Garante que o HTML e o BODY preencham toda a altura do iframe */
+        html, body {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            height: 100%;
+            overflow: hidden; /* Remove barra de rolagem */
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         /* Container do carrossel sempre ajustado ao tamanho da tela */
         .carousel-container {
             width: 90%; /* Mantém margem responsiva */
             max-width: 1200px; /* Evita que fique muito grande em telas enormes */
-            margin: 0 auto;
-            user-select: none;
             overflow: hidden; /* Impede barras de rolagem */
         }
 
@@ -113,7 +113,7 @@
                         slidesPerView: 2, // 2 slides no mobile
                     },
                     768: {
-                        slidesPerView: 3, // 3 slides no tablet
+                        slidesPerView: 4, // 4 slides no tablet
                     },
                     1024: {
                         slidesPerView: 6, // 6 slides no desktop
