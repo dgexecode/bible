@@ -40,8 +40,65 @@
 <body>
 
     <div class="carousel-container">
-        <!-- Início do carrossel -->
-        <div class="swiper">
+        <!-- Início do primeiro carrossel -->
+        <div class="swiper" id="carousel1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
+                </div>
+                <!-- Duplicação das imagens para o efeito infinito -->
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel-container">
+        <!-- Início do segundo carrossel -->
+        <div class="swiper" id="carousel2">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
@@ -99,7 +156,30 @@
     <!-- Scripts do Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.swiper', {
+        const swiper1 = new Swiper('#carousel1', {
+            slidesPerView: 'auto', // Faz com que o número de slides visíveis seja dinâmico
+            spaceBetween: 12, // Espaço entre os slides
+            autoplay: {
+                delay: 0, // Atraso entre cada slide (em milissegundos) - rotação contínua
+                disableOnInteraction: false, // Continua mesmo após interação do usuário
+            },
+            loop: true, // Faz o carrossel girar infinitamente
+            grabCursor: true, // Permite arrastar o carrossel
+            speed: 8000, // Aumento da velocidade de transição para ficar bem mais devagar
+            breakpoints: {
+                320: {
+                    slidesPerView: 2, // Exibe um slide por vez no mobile
+                },
+                768: {
+                    slidesPerView: 2, // Exibe dois slides por vez em tablets
+                },
+                1024: {
+                    slidesPerView: 4, // Exibe quatro slides por vez em telas maiores
+                }
+            }
+        });
+
+        const swiper2 = new Swiper('#carousel2', {
             slidesPerView: 'auto', // Faz com que o número de slides visíveis seja dinâmico
             spaceBetween: 12, // Espaço entre os slides
             autoplay: {
