@@ -168,6 +168,17 @@
             loop: true,
             grabCursor: true,
             speed: 8000, // Velocidade de transição
+            breakpoints: {
+                320: {
+                    slidesPerView: 2, // Exibe 2 slides no mobile
+                },
+                768: {
+                    slidesPerView: 2, // Exibe 2 slides em tablets
+                },
+                1024: {
+                    slidesPerView: 4, // Exibe 4 slides em telas maiores
+                }
+            }
         });
 
         // Inicialização do segundo carrossel
@@ -181,6 +192,17 @@
             loop: true,
             grabCursor: true,
             speed: 8000, // Velocidade de transição
+            breakpoints: {
+                320: {
+                    slidesPerView: 2, // Exibe 2 slides no mobile
+                },
+                768: {
+                    slidesPerView: 2, // Exibe 2 slides em tablets
+                },
+                1024: {
+                    slidesPerView: 4, // Exibe 4 slides em telas maiores
+                }
+            }
         });
     </script>
 
