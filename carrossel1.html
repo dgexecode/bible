@@ -10,7 +10,6 @@
             width: 100%;
             margin: 0 auto;
             user-select: none;
-            max-width: 1200px;
             margin-bottom: 30px;
             overflow: hidden;
         }
@@ -25,7 +24,7 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
-            width: auto;
+            width: 100%;
             max-width: 300px;
             box-sizing: border-box;
         }
@@ -38,7 +37,7 @@
             margin-right: 12px;
         }
 
-        /* Responsividade */
+        /* Responsividade para diferentes dispositivos */
         @media (max-width: 1024px) {
             .swiper-slide {
                 max-width: 250px;
@@ -140,7 +139,7 @@
                         slidesPerView: 2,
                     },
                     768: {
-                        slidesPerView: 6,
+                        slidesPerView: 4,
                     },
                     1024: {
                         slidesPerView: 6,
