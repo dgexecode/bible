@@ -3,25 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrossel Responsivo</title>
+    <title>Carrossel Infinito</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <style>
-        /* Garante que o HTML e o BODY preencham toda a altura do iframe */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Remove barra de rolagem */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Container do carrossel sempre ajustado ao tamanho da tela */
+        /* Container do carrossel */
         .carousel-container {
-            width: 90%; /* Mantém margem responsiva */
-            max-width: 1200px; /* Evita que fique muito grande em telas enormes */
+            width: 100%;
+            margin: 0 auto;
+            user-select: none;
+            max-width: 1200px;
+            margin-bottom: 30px;
             overflow: hidden; /* Impede barras de rolagem */
         }
 
@@ -35,6 +26,7 @@
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
+            width: auto;
             box-sizing: border-box;
         }
 
@@ -43,21 +35,24 @@
             height: auto;
             border-radius: 10px;
             user-select: none;
+            margin-right: 12px;
         }
 
-        /* Responsividade dinâmica */
+        /* Ajuste para dispositivos móveis */
         @media (max-width: 768px) {
             .swiper-slide {
                 width: 50%; /* 2 slides por vez */
             }
         }
 
+        /* Ajuste para tablets */
         @media (min-width: 769px) and (max-width: 1024px) {
             .swiper-slide {
-                width: 33.33%; /* 3 slides por vez */
+                width: 16.66%; /* 6 slides por vez */
             }
         }
 
+        /* Ajuste para desktops */
         @media (min-width: 1025px) {
             .swiper-slide {
                 width: 16.66%; /* 6 slides por vez */
@@ -71,12 +66,30 @@
     <div class="carousel-container">
         <div class="swiper" id="swiper1">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6"></div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem 4">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem 5">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem 6">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem 7">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem 8">
+                </div>
             </div>
         </div>
     </div>
@@ -85,12 +98,30 @@
     <div class="carousel-container">
         <div class="swiper" id="swiper2">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem A"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem B"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem C"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem D"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem E"></div>
-                <div class="swiper-slide"><img src="https://i.imgur.com/70c2Eem.png" alt="Imagem F"></div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EgPTwU6.png" alt="Imagem A">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/JKAEkUK.png" alt="Imagem B">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/xVdnvsY.png" alt="Imagem C">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/qkDG9BG.png" alt="Imagem D">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/RvhwLQe.png" alt="Imagem E">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/70c2Eem.png" alt="Imagem F">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/YGTGHUO.png" alt="Imagem G">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/fgFRKPb.png" alt="Imagem H">
+                </div>
             </div>
         </div>
     </div>
