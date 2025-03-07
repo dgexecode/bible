@@ -11,9 +11,10 @@
             width: 100%;
             margin: 0 auto;
             user-select: none;
-            max-width: 1200px;
+            max-width: 100%; /* Garante que o container ocupe toda a largura disponível */
             margin-bottom: 30px;
             overflow: hidden; /* Impede barras de rolagem */
+            box-sizing: border-box; /* Garante que o padding e margin não ultrapassem a largura */
         }
 
         .swiper-wrapper {
@@ -48,14 +49,14 @@
         /* Ajuste para tablets */
         @media (min-width: 769px) and (max-width: 1024px) {
             .swiper-slide {
-                width: 16.66%; /* 6 slides por vez */
+                width: 33.33%; /* 3 slides por vez em tablets */
             }
         }
 
         /* Ajuste para desktops */
         @media (min-width: 1025px) {
             .swiper-slide {
-                width: 16.66%; /* 6 slides por vez */
+                width: 16.66%; /* 6 slides por vez no desktop */
             }
         }
     </style>
@@ -144,7 +145,7 @@
                         slidesPerView: 2.2, // 2 slides no mobile
                     },
                     768: {
-                        slidesPerView: 2, // 2 slides no tablet
+                        slidesPerView: 3, // 3 slides em tablets
                     },
                     1024: {
                         slidesPerView: 6, // 6 slides no desktop
