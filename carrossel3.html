@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel Infinito 2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <style>
+        /* Container do carrossel */ 
+        .carousel-container {
+            width: 90%;
+            margin: 0 auto;
+            user-select: none;
+            max-width: 90%;
+            margin-bottom: 30px;
+            overflow: hidden; /* Impede barras de rolagem */
+            box-sizing: border-box; /* Garante que o padding e margin não ultrapassem a largura */
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            width: auto;
+            box-sizing: border-box;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            user-select: none;
+            margin-right: 8px; /* Reduzindo a margem para aumentar o espaço */
+        }
+
+        /* Ajuste para dispositivos móveis */
+        @media (max-width: 768px) {
+            .swiper-slide {
+                width: 50%; /* 2 slides por vez no mobile */
+            }
+        }
+
+        /* Ajuste para tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .swiper-slide {
+                width: 25%; /* 4 slides por vez em tablets */
+            }
+        }
+
+        /* Ajuste para desktops */
+        @media (min-width: 1025px) {
+            .swiper-slide {
+                width: 16.66%; /* 6 slides por vez no desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Carrossel 2 -->
+    <div class="carousel-container">
+        <div class="swiper" id="swiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/bfJvNBe.jpeg" alt="Imagem A">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/2UDY2sC.jpeg" alt="Imagem B">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/EwPP4FD.jpeg" alt="Imagem C">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/6pMNupK.jpeg" alt="Imagem D">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/VzSUeX4.jpeg" alt="Imagem E">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/hlvXfmY.jpeg" alt="Imagem F">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        function initSwiper(id) {
+            return new Swiper(id, {
+                slidesPerView: 'auto',
+                spaceBetween: 8,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                grabCursor: true,
+                speed: 8000,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 2.2, // 2 slides no mobile
+                    },
+                    768: {
+                        slidesPerView: 4, // 4 slides em tablets
+                    },
+                    1024: {
+                        slidesPerView: 6, // 6 slides no desktop
+                    }
+                }
+            });
+        }
+
+        const swiper2 = initSwiper('#swiper2');
+    </script>
+
+</body>
+</html>
